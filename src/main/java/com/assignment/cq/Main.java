@@ -39,12 +39,6 @@ public class Main implements CommandLineRunner {
     public static void main(String args[]) {
         logger.info("Hello World!");
         SpringApplication.run(Main.class, args);
-
-        /*
-        https://www.javainuse.com/devOps/docker/docker-mysql
-        https://hevodata.com/learn/spring-boot-mysql/
-        https://constructiviq-my.sharepoint.com/:w:/p/luke/EfYzsO2BlKhIgeO2CzpPVDMBLysPvzxFpUzaE4gI1DDp0Q?rtime=eO6jPGB_2kg
-         */
     }
 
     @Override
