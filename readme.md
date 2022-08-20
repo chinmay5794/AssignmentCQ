@@ -7,5 +7,5 @@ git clone https://github.com/chinmay5794/AssignmentCQ.git <br/>
 mvn clean install -DskipTests <br/>
 java -jar target/cq-1.0.0.jar <br/>
 
-Output should be seen in tables ciq.dt_item & ciq.dt_item_property.
+Output should be seen in tables ciq.dt_item & ciq.dt_item_property. <br/>
 Tested on Ubuntu 20.04.1.
