@@ -3,7 +3,7 @@ package com.assignment.cq.scheduling;
 import com.assignment.cq.datafetchers.IDataFetcher;
 import com.assignment.cq.model.Property;
 import com.assignment.cq.model.sourceparsing.*;
-import com.assignment.cq.services.ItemsService;
+import com.assignment.cq.services.ItemsIngestService;
 import com.google.gson.JsonArray;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +35,7 @@ public class TaskSchedulingService {
     private TaskScheduler taskScheduler;
 
     @Autowired
-    private ItemsService itemsService;
+    private ItemsIngestService itemsIngestService;
 
     Map<Long, ScheduledFuture<?>> jobsMap = new HashMap<>();
 
@@ -51,6 +51,7 @@ public class TaskSchedulingService {
             @Override
             public void run() {
                 // get resource details
+                // FIXME : Store ID of DataResourceFetcher, & refresh it always
                 DataResource dataResource = dataResourceFetcher.getDataResource();
                 String resource = dataResource.getResource();
                 DataSource source = dataResource.getDataSource();
@@ -68,7 +69,7 @@ public class TaskSchedulingService {
                         JsonArray result = invokeSpringBeanDataFetcher(resource,
                                 dataFetcher.getDataFetcherPath(), suppliedProperties);
                         // TODO: if chunk size is large, split into multiple transactions
-                        itemsService.updateOrInsertItems(source, result);
+                        itemsIngestService.updateOrInsertItems(source.getName(), result);
                     }
                     // TODO : handle other fetcher types
                 } catch (Exception e) {

@@ -5,7 +5,7 @@ import com.assignment.cq.model.sourceparsing.DataResource;
 import com.assignment.cq.model.sourceparsing.DataSource;
 import com.assignment.cq.repositories.DataResourceRepository;
 import com.assignment.cq.repositories.DataSourceRepository;
-import com.assignment.cq.services.ItemsService;
+import com.assignment.cq.services.ItemsIngestService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +28,7 @@ public class Main implements CommandLineRunner {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     @Autowired
-    private ItemsService itemsService;
+    private ItemsIngestService itemsIngestService;
 
     @Autowired
     private DataSourceRepository dataSourceRepository;
@@ -68,9 +68,7 @@ public class Main implements CommandLineRunner {
         try {
             JsonArray result = crawler.fetchData(resource, properties);
             logger.info(result);
-            itemsService.updateOrInsertItems(dataSource, result);
-            Thread.sleep(10000);
-            itemsService.updateOrInsertItems(dataSource, result);
+            itemsIngestService.updateOrInsertItems(dataSource.getName(), result);
         } catch (Exception e) {
             logger.error("Exception !!", e);
         }
