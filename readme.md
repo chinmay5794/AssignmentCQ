@@ -2,7 +2,7 @@ Pre-requisites - Java 8, Maven, MySQL Server (username=root, password=welcome123
 
 Technologies used - Spring Boot, Spring JPA, Gson, Hibernate Envers (for capturing data history), HtmlUnit (for web crawling) 
 
-Commands to start the server - <br/>
+Commands to build application & start the server - <br/>
 git clone https://github.com/chinmay5794/AssignmentCQ.git <br/>
 mvn clean install -DskipTests <br/>
 java -jar target/cq-1.0.0.jar <br/>
