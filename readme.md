@@ -9,3 +9,9 @@ java -jar target/cq-1.0.0.jar <br/>
 
 Output should be seen in tables ciq.dt_item & ciq.dt_item_property. <br/>
 Tested on Ubuntu 20.04.1.
+
+Few of the major missing items - <br/>
+1. No service layer to massage results of repository layer
+2. Error handling & notification
+3. Controller layer & proper DTO objects
+4. Object Composition might be a better a approach for creating appropriate Data Fetcher object

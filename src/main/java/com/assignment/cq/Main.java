@@ -56,7 +56,6 @@ public class Main implements CommandLineRunner {
 
         Map<String, String> properties = new HashMap<>();
         String resource = "https://www.screwfix.com/c/heating-plumbing/pipe/cat831500";
-        // properties.put(SimpleXPathBasedWebCrawler.WEB_PAGE_URL_KEY, "https://www.screwfix.com/c/heating-plumbing/pipe/cat831500");
         properties.put(SimpleXPathBasedWebCrawler.LIST_XPATH_KEY, "(//div[@class='row flex-container']/div[contains(@id, 'product_box')])");
         Map<String, String> featureXPathStore = new HashMap<>();
         featureXPathStore.put("name", ".//a[contains(@id, 'product_description')]");
@@ -68,7 +67,7 @@ public class Main implements CommandLineRunner {
         try {
             JsonArray result = crawler.fetchData(resource, properties);
             logger.info(result);
-            itemsIngestService.updateOrInsertItems(dataSource.getName(), result);
+            itemsIngestService.ingestItems(dataSource.getName(), result);
         } catch (Exception e) {
             logger.error("Exception !!", e);
         }

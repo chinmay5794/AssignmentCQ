@@ -69,12 +69,13 @@ public class TaskSchedulingService {
                         JsonArray result = invokeSpringBeanDataFetcher(resource,
                                 dataFetcher.getDataFetcherPath(), suppliedProperties);
                         // TODO: if chunk size is large, split into multiple transactions
-                        itemsIngestService.updateOrInsertItems(source.getName(), result);
+                        itemsIngestService.ingestItems(source.getName(), result);
                     }
                     // TODO : handle other fetcher types
                 } catch (Exception e) {
                     String errMsg = String.format("Job %s has failed", dataResourceFetcher.getId());
                     logger.error(errMsg, e);
+                    // TODO : notify
                 }
             }
         };

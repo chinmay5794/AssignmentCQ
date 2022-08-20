@@ -66,7 +66,7 @@ public class ItemsIngestServiceImpl implements ItemsIngestService {
      */
     @Override
     @Transactional
-    public void updateOrInsertItems(String sourceName, JsonArray items) {
+    public void ingestItems(String sourceName, JsonArray items) {
 
         List<DataSource> sourceList = dataSourceRepository.findByName(sourceName);
         DataSource source = null;
