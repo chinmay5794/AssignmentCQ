@@ -1,8 +1,8 @@
-Pre-requisites - Java 8, Maven, MySQL (user credentials - root/welcome123, schema "ciq" should exist)
+Pre-requisites - Java 8, Maven, MySQL Server (username=root, password=welcome123, schema=ciq)
 
-Commands to start the server - 
-git clone https://github.com/chinmay5794/AssignmentCQ.git
-mvn clean install -DskipTests
-java -jar target/cj-1.0.0.jar
+Commands to start the server - <br/>
+git clone https://github.com/chinmay5794/AssignmentCQ.git <br/>
+mvn clean install -DskipTests <br/>
+java -jar target/cj-1.0.0.jar <br/>
 
 Output should be seen in tables ciq.dt_item & ciq.dt_item_property.
